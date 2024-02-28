@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Giriş Yap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-img">
+  <div class="content">
+    <header>Giriş Yap</header>
+    <form action="https://jagadeeshpj.herokuapp.com/" method="POST">
+      <div class="field">
+        <span class="fa fa-user"></span>
+        <input type="text" required placeholder="Email or Phone">
+      </div>
+      <div class="field space">
+        <span class="fa fa-lock"></span>
+        <input type="password" class="pass-key" required placeholder="Password">
+        <span type="password" class="show">Göster</span>
+      </div>
+      <div class="pass">
+        <a href="#">Şifreni Mi Unuttun?</a>  
+      </div>
+      <div class="field">
+        <input type="submit" value="LOGIN">
+      </div>
+    </form>
+    <div class="login"> Veya şununla giriş yapın:</div>
+    <div class="links">
+      <div class="facebook">
+        <i class="fab fa-facebook-f"><span>Facebook</span></i>
+      </div>
+      <div class="instagram">
+        <i class="fab fa-instagram"><span>Instagram</span></i>
+      </div>
+    </div>
+    <div class="signup">Hesabın mı yok?
+      <a href="signup.html">Şimdi Kayıt Ol</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const pass_field = document.querySelector(".pass-key");
+  const showBtn = document.querySelector(".show");
+  showBtn.addEventListener("click", function () {
+    if (pass_field.type === "password") {
+      pass_field.type = "text";
+      showBtn.textContent = "Gizle";
+      showBtn.style.color = "#3498db";
+    } else {
+      pass_field.type = "password";
+      showBtn.textContent = "SHOW";
+      showBtn.style.color = "#222";
+    }
+  });
+</script>
+
+</body>
+</html>
+

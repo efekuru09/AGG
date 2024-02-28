@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kayıt Ol</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-img">
+  <div class="content">
+    <header>Kayıt Ol</header>
+    <form action="https://jagadeeshpj.herokuapp.com/" method="POST">
+      <div class="field">
+        <span class="fa fa-user"></span>
+        <input type="text" required placeholder="Ad soyad">
+      </div>
+      <div class="field space">
+        <span class="fa fa-envelope"></span>
+        <input type="text" required placeholder="E-Posta">
+      </div>
+      <div class="field space">
+        <span class="fa fa-lock"></span>
+        <input type="password" class="pass-key" required placeholder="Şifre">
+        <span class="show">Göster</span>
+      </div>
+      <div class="pass">
+      </div>
+      <div class="field">
+        <input type="submit" value="SIGN UP">
+      </div>
+    </form>
+    <div class="login">
+      Veya şununla kaydolun:</div>
+    <div class="links">
+      <div class="facebook">
+        <i class="fab fa-facebook-f" onclick="facebookLogin()"><span>Facebook</span></i>
+      </div>
+      <div class="instagram">
+        <i class="fab fa-instagram"><span>Instagram</span></i>
+      </div>
+    </div>
+    <div class="signup">
+      Daha önce kayıt oldunuz mu?
+      <a href="../giris.html/index.html">Giriş Yap</a>
+    </div>
+  </div>
+</div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script>
+    const pass_field = document.querySelector(".pass-key");
+    const showBtn = document.querySelector(".show");
+    showBtn.addEventListener("click", function () {
+      if (pass_field.type === "password") {
+        pass_field.type = "text";
+        showBtn.textContent = "Gizle";
+        showBtn.style.color = "#3498db";
+      } else {
+        pass_field.type = "password";
+        showBtn.textContent = "SHOW";
+        showBtn.style.color = "#222";
+      }
+    });
+            // Facebook SDK'yı başlat
+            window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '1051904682533755',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v12.0'
+            });
+
+            // Giriş durumu kontrolü
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        };
+
+        // Kullanıcı giriş durumu değişikliğini yönet
+        function statusChangeCallback(response) {
+            if (response.status === 'connected') {
+                // Kullanıcı Facebook ile giriş yaptı, istediğiniz işlemleri yapabilirsiniz.
+                console.log('Kullanıcı giriş yaptı');
+                // Örnek olarak, kullanıcının adını alma
+                FB.api('/me', function(response) {
+                    console.log('Kullanıcı adı: ' + response.name);
+                });
+            } else {
+                // Kullanıcı giriş yapmadı veya uygulama izin vermedi.
+                console.log('Kullanıcı giriş yapmadı');
+            }
+        }
+
+        // Facebook ile giriş yap
+        function facebookLogin() {
+            FB.login(function(response) {
+                statusChangeCallback(response);
+            }, {scope: 'email'}); // İzinler: e-posta adresine erişim
+        }
+  </script>
+
+</body>
+</html>
